@@ -13,10 +13,6 @@ module.exports = {
 
     datastoreIdentity: {
       example: 'localmysql'
-    },
-
-    modelIdentity: {
-      example: 'wolf'
     }
 
   },
