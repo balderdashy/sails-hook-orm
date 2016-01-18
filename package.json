@@ -24,9 +24,10 @@
   },
   "homepage": "https://github.com/mikermcneil/sails-hook-orm-next#readme",
   "dependencies": {
-    "async": "^1.5.2",
-    "lodash": "^4.0.0",
-    "rttc": "^9.3.0",
-    "waterline": "^0.10.30"
+    "async": "1.5.2",
+    "lodash": "4.0.0",
+    "prompt": "0.2.14",
+    "rttc": "9.3.0",
+    "waterline": "0.10.30"
   }
 }
