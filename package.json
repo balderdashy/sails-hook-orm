@@ -1,0 +1,26 @@
+{
+  "name": "sails-hook-orm-next",
+  "version": "1.0.0",
+  "description": "This is a standalone version of the orm hook from Sails core, with most of the 0.9 deprecation messages ripped out.  This is designed to be both an example of how to install a fork of Waterline in an app using a core hook override, as well as the beginning of a process to clean up the ORM hook.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/mocha/bin/mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikermcneil/sails-hook-orm-next.git"
+  },
+  "keywords": [
+    "waterline",
+    "orm",
+    "sails",
+    "hook",
+    "sails-hook"
+  ],
+  "author": "Mike McNeil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikermcneil/sails-hook-orm-next/issues"
+  },
+  "homepage": "https://github.com/mikermcneil/sails-hook-orm-next#readme"
+}
