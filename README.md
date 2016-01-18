@@ -4,7 +4,8 @@
 >
 > This is a standalone version of the orm hook from Sails core, with most of the 0.9 deprecation messages
 > ripped out.  This is designed to be both an example of how to install a fork of Waterline in an app using a
-> core hook override, as well as the beginning of a process to clean up the ORM hook.
+> core hook override, as well as the beginning of a process to clean up the ORM hook.  It is likely that this 
+> version of the ORM hook will not become the default for Sails core until after the v0.12 release.
 
 
 
