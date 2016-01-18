@@ -22,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/mikermcneil/sails-hook-orm-next/issues"
   },
-  "homepage": "https://github.com/mikermcneil/sails-hook-orm-next#readme"
+  "homepage": "https://github.com/mikermcneil/sails-hook-orm-next#readme",
+  "dependencies": {
+    "async": "^1.5.2",
+    "lodash": "^4.0.0",
+    "waterline": "^0.10.30"
+  }
 }
