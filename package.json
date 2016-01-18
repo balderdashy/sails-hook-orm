@@ -26,6 +26,7 @@
   "dependencies": {
     "async": "^1.5.2",
     "lodash": "^4.0.0",
+    "rttc": "^9.3.0",
     "waterline": "^0.10.30"
   }
 }
