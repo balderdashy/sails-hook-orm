@@ -1,6 +1,6 @@
 {
-  "name": "sails-hook-orm-next",
-  "version": "1.0.0",
+  "name": "sails-hook-orm",
+  "version": "0.1.0",
   "description": "This is a standalone version of the orm hook from Sails core. It is likely that this version of the ORM hook will not become the default until after the v0.12 release.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mikermcneil/sails-hook-orm-next.git"
+    "url": "git+https://github.com/mikermcneil/sails-hook-orm.git"
   },
   "keywords": [
     "waterline",
@@ -20,9 +20,9 @@
   "author": "Mike McNeil",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mikermcneil/sails-hook-orm-next/issues"
+    "url": "https://github.com/mikermcneil/sails-hook-orm/issues"
   },
-  "homepage": "https://github.com/mikermcneil/sails-hook-orm-next#readme",
+  "homepage": "https://github.com/mikermcneil/sails-hook-orm#readme",
   "dependencies": {
     "async": "1.5.2",
     "lodash": "4.0.0",
