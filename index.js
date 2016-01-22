@@ -88,6 +88,8 @@ module.exports = function (sails) {
      */
     initialize: function(cb) {
 
+      sails.log.debug('\n-----------------\nThis app is loading a custom version of the `orm` hook.  See https://github.com/mikermcneil/sails-hook-orm for more information.\n-----------------');
+
       ////////////////////////////////////////////////////////////////////////////
       // NOTE: If a user hook needs to add or modify model definitions,
       // the hook should wait until `hook:orm:loaded`, then reload the original

@@ -29,5 +29,8 @@
     "prompt": "0.2.14",
     "rttc": "9.3.0",
     "waterline": "0.10.30"
+  },
+  "sails": {
+    "isHook": true
   }
 }
