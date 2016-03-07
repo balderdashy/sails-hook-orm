@@ -1,6 +1,6 @@
 # orm (Core Hook)
 
-> ##### sails-hook-orm-next
+> ##### sails-hook-orm
 >
 > This is a standalone version of the orm hook from Sails core, with most of the 0.9 deprecation messages
 > ripped out.  This is designed to be both an example of how to install a fork of Waterline in an app using a
