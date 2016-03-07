@@ -1,7 +1,7 @@
 {
   "name": "sails-hook-orm",
   "version": "0.2.0",
-  "description": "This is a standalone version of the orm hook from Sails core. It is likely that this version of the ORM hook will not become the default until after the v0.12 release.",
+  "description": "The next-gen ORM hook from Sails core.",
   "main": "index.js",
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha test"
