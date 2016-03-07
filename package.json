@@ -25,7 +25,7 @@
   "homepage": "https://github.com/mikermcneil/sails-hook-orm#readme",
   "dependencies": {
     "async": "1.5.2",
-    "lodash": "4.0.0",
+    "lodash": "3.10.1",
     "prompt": "0.2.14",
     "rttc": "9.3.0",
     "waterline": "0.10.30"
