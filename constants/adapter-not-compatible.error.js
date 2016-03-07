@@ -6,7 +6,7 @@ module.exports = {
 
   inputs: {
 
-    adapterPackageName: {
+    adapterIdentity: {
       example: 'sails-mysql',
       required: true
     },
@@ -19,7 +19,7 @@ module.exports = {
 
 
   template:
-  'The installed `<%=adapterPackageName%>` adapter appears to be designed for an earlier version of Sails\n'+
+  'The `<%=adapterIdentity%>` adapter appears to be designed for an earlier version of Sails\n'+
   '(it has a `registerCollection()` method, meaning it is for Sails version 0.9.x and below).\n'+
   'Since you\'re running a newer version of Sails, the installed version of this adapter probably isn\'t going to work.\n'+
   'Please visit the documentation for this adapter (e.g. on GitHub) to see if a new version has been released\n'+
