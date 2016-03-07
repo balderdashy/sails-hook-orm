@@ -4,9 +4,9 @@
 
 var util = require('util');
 var async = require('async');
-var toInitialize = require('./lib/to-initialize');
-var toReload = require('./lib/to-reload');
-var toTeardown = require('./lib/to-teardown');
+var initialize = require('./lib/initialize');
+var reload = require('./lib/reload');
+var teardown = require('./lib/teardown');
 
 
 
@@ -24,7 +24,7 @@ module.exports = function (sails) {
    *
    * @type {Dictionary}
    */
-  var hook = {
+  return {
 
 
     /**
@@ -77,22 +77,22 @@ module.exports = function (sails) {
       // (This particular timing-- before initialize()-- is for backwards compatibility.
       //  Originally it was so that other hooks could mix in models/adapters. Note that
       //  this behavior may change in a future version of Sails.)
-      if (!hook.models) {
-        hook.models = {};
+      if (!sails.hooks.orm.models) {
+        sails.hooks.orm.models = {};
         // Expose a reference to `hook.models` as `sails.models`
-        sails.models = hook.models;
+        sails.models = sails.hooks.orm.models;
       }
-      if (!hook.adapters) {
-        hook.adapters = {};
+      if (!sails.hooks.orm.adapters) {
+        sails.hooks.orm.adapters = {};
         // Expose a reference to `hook.adapters` as `sails.adapters`
-        sails.adapters = hook.adapters;
+        sails.adapters = sails.hooks.orm.adapters;
       }
 
       // Listen for reload events
-      sails.on('hook:orm:reload', hook.reload);
+      sails.on('hook:orm:reload', sails.hooks.orm.reload);
 
       // Listen for lower event, and tear down all of the adapters
-      sails.once('lower', hook.teardown);
+      sails.once('lower', sails.hooks.orm.teardown);
     },
 
 
@@ -102,25 +102,28 @@ module.exports = function (sails) {
      *
      * Logic to run when this hook loads.
      */
-    initialize: toInitialize(hook, sails),
+    initialize: function (next) {
+      return initialize(sails.hooks.orm, sails, next);
+    },
 
 
 
     /**
      * sails.hooks.orm.reload()
      */
-    reload: toReload(hook, sails),
+    reload: function (next) {
+      return reload(sails.hooks.orm, sails, next);
+    },
 
 
 
     /**
      * sails.hooks.orm.teardown()
      */
-    teardown: toTeardown(hook, sails),
-
+    teardown: function (next) {
+      return teardown(sails.hooks.orm, sails, next);
+    }
 
 
   };
-
-  return hook;
 };
