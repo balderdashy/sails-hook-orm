@@ -41,6 +41,17 @@ module.exports = function (sails) {
         models: true
       },
 
+
+      // Default model/adapter definitions to automatically attach
+      // to `sails.hooks.orm.adapters` and/or `sails.hooks.orm.models`.
+      orm: {
+        moduleDefinitions: {
+          models: {},
+          adapters: {},
+        }
+      },
+
+
       // Default model properties
       models: {
 
