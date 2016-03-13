@@ -103,6 +103,17 @@ module.exports = function (sails) {
      * Logic to run when this hook loads.
      */
     initialize: function (next) {
+      // console.log('>>>>>> sails.hooks.orm.initialize() called.');
+      // var _ = require('lodash');
+      // console.log(
+      //   'Currently there are %d models, %d datastores, and %d adapters:',
+      //   _.keys(sails.hooks.orm.models).length,
+      //   _.keys(sails.hooks.orm.datastores).length,
+      //   _.keys(sails.hooks.orm.adapters).length,
+      //   _.keys(sails.hooks.orm.models),
+      //   _.keys(sails.hooks.orm.datastores),
+      //   _.keys(sails.hooks.orm.adapters)
+      // );
       return initialize(sails.hooks.orm, sails, next);
     },
 
@@ -121,6 +132,7 @@ module.exports = function (sails) {
      * sails.hooks.orm.teardown()
      */
     teardown: function (next) {
+      // console.log('>>>>>> sails.hooks.orm.teardown() called.');
       return teardown(sails.hooks.orm, sails, next);
     }
 
