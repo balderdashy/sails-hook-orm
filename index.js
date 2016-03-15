@@ -45,10 +45,20 @@ module.exports = function (sails) {
       // Default model/adapter definitions to automatically attach
       // to `sails.hooks.orm.adapters` and/or `sails.hooks.orm.models`.
       orm: {
+
+        // By default, relevant warnings are shown when NODE_ENV is "production".
+        skipProductionWarnings: false,
+
+        //================================================================
+        // Experimental
+        // (may change at any time!)
+        //================================================================
         moduleDefinitions: {
           models: {},
           adapters: {},
         }
+        //================================================================
+
       },
 
 
