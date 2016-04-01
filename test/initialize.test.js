@@ -20,7 +20,7 @@ describe('initialize()', function (){
       log: { level: 'warn' },
       hooks: {
         // Inject the orm hook in this repo into this Sails app
-        orm: require('../..')
+        orm: require('../')
       },
       loadHooks: ['moduleloader', 'userconfig', 'orm']
     },done);
