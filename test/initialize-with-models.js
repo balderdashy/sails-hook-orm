@@ -8,7 +8,7 @@ var Sails = require('sails').Sails;
 
 
 
-describe('initialize()', function (){
+describe('initialize() with model(s)', function (){
 
   // New up an instance of Sails.
   var app = new Sails();
@@ -22,7 +22,16 @@ describe('initialize()', function (){
         // Inject the orm hook in this repo into this Sails app
         orm: require('../')
       },
-      loadHooks: ['moduleloader', 'userconfig', 'orm']
+      loadHooks: ['moduleloader', 'userconfig', 'orm'],
+      orm: {
+        // THIS IS FOR EXPERIMENTAL USE ONLY!
+        // (could change at any time)
+        moduleDefinitions: {
+          models: {
+            foo: {}
+          }
+        }
+      }
     },done);
   });
 
@@ -41,6 +50,11 @@ describe('initialize()', function (){
 
   it('should have also exposed `sails.models` as a direct reference to `sails.hooks.orm.models`', function (){
     assert(app.models === app.hooks.orm.models);
+  });
+
+  it('should contain the expected models in `sails.hooks.orm.models`', function (){
+    assert(_.isObject(app.models[0]));
+    assert.equal(app.models.length, 1);
   });
 
 
