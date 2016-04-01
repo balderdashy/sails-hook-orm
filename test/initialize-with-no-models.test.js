@@ -8,7 +8,7 @@ var Sails = require('sails').Sails;
 
 
 
-describe('initialize() with no models', function (){
+describe('initialize() with no models and no adapters', function (){
 
   // New up an instance of Sails.
   var app = new Sails();
