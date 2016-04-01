@@ -27,11 +27,15 @@
     "async": "1.5.2",
     "lodash": "3.10.1",
     "prompt": "0.2.14",
-    "rttc": "9.3.0",
-    "waterline": "0.11.0"
+    "rttc": "~9.3.0",
+    "waterline": "~0.12.0"
   },
   "sails": {
     "isHook": true,
     "hookName": "orm"
+  },
+  "devDependencies": {
+    "mocha": "2.4.5",
+    "sails": "~0.12.1"
   }
 }
