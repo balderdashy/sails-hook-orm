@@ -48,7 +48,16 @@ describe('initialize() with model(s)', function (){
             return done(new Error('Expected `E_ADAPTER_NOT_INSTALLED`, but got a different error: \n'+err.stack+'\n(for ^^^, error code is `'+err.code+'`'));
           }
         }
-        return done(new Error('Should have failed to load the ORM hook.'));
+
+        // If we're here, then Sails loaded successfully, even though it should have
+        // failed to load.  So we lower the Sails app to prevent it from interfering
+        // with other tests.
+        app.lower(function (err) {
+          if (err) {
+            console.log(' -- NOTE --\nAn **unrelated** error occurred while attempting to lower Sails:',err);
+          }
+          return done(new Error('Should have failed to load the ORM hook.'));
+        });
       });
     });
   });//</without the appropriate adapter(s)>
