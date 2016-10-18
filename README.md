@@ -1,14 +1,8 @@
-# sails-hook-orm 
+# sails-hook-orm
 
 Implements support for Waterline ORM in Sails.
 
-> This is a core hook in the Sails.js framework.  You can override or disable it using your sailsrc file or environment variables.  See http://sailsjs.org/documentation/concepts/configuration for more information.
-
-
-## Status
-
-> ##### Stability: [2](https://github.com/balderdashy/sails-docs/blob/master/contributing/stability-index.md) - Stable
-
+> This is a core hook in the Sails.js framework.  You can override or disable it using your sailsrc file or environment variables.  See [Concepts > Configuration](http://sailsjs.com/docs/concepts/configuration) for more information.
 
 
 ## Dependencies
@@ -182,7 +176,7 @@ This repo contains a hook, one of the building blocks Sails is made out of.
 
 #### What version of Sails is this for?
 
-This hook is a dependency of Sails core as of v0.12.
+This hook is a dependency of Sails core as of Sails v0.12, in Sails v1, and beyond.
 
 
 #### Can I disable this hook?
@@ -202,8 +196,24 @@ Yes.  To disable this hook, merge the following JSON into your project's `.sails
 Yes.  To override this hook, define your replacement hook with `identity: orm` in your `.sailsrc` file or your app's `api/hooks/` directory.
 
 
+## Help
+
+If you have further questions or are having trouble, click [here](http://sailsjs.com/support).
+
+
+## Bugs &nbsp; [![NPM version](https://badge.fury.io/js/sails-hook-orm.svg)](http://npmjs.com/package/sails-hook-orm)
+
+To report a bug, [click here](http://sailsjs.com/bugs).
+
+
+## Contributing
+
+Please observe the guidelines and conventions laid out in the [Sails project contribution guide](http://sailsjs.com/contribute) when opening issues or submitting pull requests.
+
+[![NPM](https://nodei.co/npm/sails-hook-orm.png?downloads=true)](http://npmjs.com/package/sails-hook-orm)
 
 
 ## License
 
-MIT
+The [Sails framework](http://sailsjs.com) is free and open-source under the [MIT License](http://sailsjs.com/license).
+

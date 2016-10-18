@@ -1,7 +1,7 @@
 {
   "name": "sails-hook-orm",
   "version": "1.0.7",
-  "description": "The next-gen ORM hook from Sails core.",
+  "description": "The ORM hook from Sails core.",
   "main": "index.js",
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha test -t 15000"
@@ -20,9 +20,9 @@
   "author": "Mike McNeil",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mikermcneil/sails-hook-orm/issues"
+    "url": "http://sailsjs.com/bugs"
   },
-  "homepage": "https://github.com/mikermcneil/sails-hook-orm#readme",
+  "homepage": "http://sailsjs.com",
   "dependencies": {
     "async": "1.5.2",
     "lodash": "3.10.1",
