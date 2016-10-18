@@ -24,10 +24,10 @@
   },
   "homepage": "http://sailsjs.com",
   "dependencies": {
-    "async": "1.5.2",
+    "async": "2.0.1",
     "lodash": "3.10.1",
     "prompt": "0.2.14",
-    "rttc": "~9.3.0",
+    "rttc": "^10.0.0-0",
     "waterline": "~0.11.0"
   },
   "sails": {
@@ -35,7 +35,7 @@
     "hookName": "orm"
   },
   "devDependencies": {
-    "mocha": "2.4.5",
-    "sails": "~0.12.1"
+    "mocha": "3.0.2",
+    "sails": "^1.0.0-5"
   }
 }
