@@ -55,7 +55,12 @@ module.exports = function (sails) {
         //================================================================
         moduleDefinitions: {
           models: {},
-          adapters: {},
+          adapters: {
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            // TODO: get rid of this once we pass it in directly below
+            // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+            'sails-disk': require('sails-disk')
+          },
         }
         //================================================================
 
@@ -68,6 +73,7 @@ module.exports = function (sails) {
         // This default connection (i.e. datasource) for the app
         // will be used for each model unless otherwise specified.
         connection: 'localDiskDb'
+
       },
 
 
@@ -79,8 +85,14 @@ module.exports = function (sails) {
         // (by default, creates the file: `.tmp/localDiskDb.db`)
         localDiskDb: {
           adapter: 'sails-disk'
+          // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+          // TODO: change this to:
+          // `adapter: require('sails-disk')`
+          // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         }
+
       }
+
     },
 
 
