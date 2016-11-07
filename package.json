@@ -25,6 +25,7 @@
   "homepage": "http://sailsjs.com",
   "dependencies": {
     "async": "2.0.1",
+    "bluebird": "3.4.6",
     "flaverr": "^1.0.0",
     "lodash": "3.10.1",
     "prompt": "0.2.14",
