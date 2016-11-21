@@ -25,11 +25,13 @@
   "homepage": "http://sailsjs.com",
   "dependencies": {
     "async": "2.0.1",
+    "bluebird": "3.4.6",
+    "flaverr": "^1.0.0",
     "lodash": "3.10.1",
     "prompt": "0.2.14",
     "rttc": "^10.0.0-0",
     "sails-disk": "^0.10.10",
-    "waterline": "~0.11.0"
+    "waterline": "balderdashy/waterline"
   },
   "sails": {
     "isHook": true,
