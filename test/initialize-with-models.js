@@ -96,7 +96,14 @@ describe('initialize() with model(s)', function (){
           // (could change at any time)
           moduleDefinitions: {
             models: {
-              foo: {}
+              foo: {
+                primaryKey: 'id',
+                attributes: {
+                  id: {
+                    type: 'number'
+                  }
+                }
+              }
             },
             adapters: {
               'sails-disk': {}
