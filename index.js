@@ -55,12 +55,6 @@ module.exports = function (sails) {
         //================================================================
         moduleDefinitions: {
           models: {},
-          adapters: {
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            // TODO: get rid of this once we pass it in directly below
-            // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-            'sails-disk': require('sails-disk')
-          },
         }
         //================================================================
 
@@ -72,7 +66,7 @@ module.exports = function (sails) {
 
         // This default connection (i.e. datasource) for the app
         // will be used for each model unless otherwise specified.
-        datastore: 'localDiskDb',
+        datastore: 'default',
 
         // Make the `id` attribute the default primary key.
         primaryKey: 'id'
@@ -86,12 +80,8 @@ module.exports = function (sails) {
 
         // Built-in disk persistence
         // (by default, creates the file: `.tmp/localDiskDb.db`)
-        localDiskDb: {
-          adapter: 'sails-disk'
-          // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-          // TODO: change this to:
-          // `adapter: require('sails-disk')`
-          // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        default: {
+          adapter: require('sails-disk')
         }
 
       }
