@@ -72,7 +72,10 @@ module.exports = function (sails) {
 
         // This default connection (i.e. datasource) for the app
         // will be used for each model unless otherwise specified.
-        datastore: 'localDiskDb'
+        datastore: 'localDiskDb',
+
+        // Make the `id` attribute the default primary key.
+        primaryKey: 'id'
 
       },
 
