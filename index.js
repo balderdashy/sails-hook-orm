@@ -72,14 +72,14 @@ module.exports = function (sails) {
 
         // This default connection (i.e. datasource) for the app
         // will be used for each model unless otherwise specified.
-        connection: 'localDiskDb'
+        datastore: 'localDiskDb'
 
       },
 
 
       // Connections to data sources, web services, and external APIs.
       // Can be attached to models and/or accessed directly.
-      connections: {
+      datastores: {
 
         // Built-in disk persistence
         // (by default, creates the file: `.tmp/localDiskDb.db`)
@@ -119,6 +119,14 @@ module.exports = function (sails) {
         sails.hooks.orm.adapters = {};
         // Expose a reference to `hook.adapters` as `sails.adapters`
         sails.adapters = sails.hooks.orm.adapters;
+      }
+
+      // Look for the `connections` config, and if found, log a deprecation message
+      // and move it to `datastores`.
+      if (sails.config.connections) {
+        sails.log.debug('The `sails.config.connections` setting is deprecated.  Please use `sails.config.datastores` instead.\n');
+        sails.config.datastores = sails.config.connections;
+        delete sails.config.connections;
       }
 
       // Listen for reload events

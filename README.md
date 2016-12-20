@@ -61,8 +61,8 @@ This hook sets the following implicit default configuration on `sails.config`:
 | Property                                       | Type          | Default         |
 |------------------------------------------------|:-------------:|-----------------|
 | `sails.config.globals.models`                  | ((boolean))   | `true`          |
-| `sails.config.models.connection`               | ((string))    | `localDiskDb`   |
-| `sails.config.connections.localDiskDb.adapter` | ((string))    | `sails-disk`    |
+| `sails.config.models.datastore`                | ((string))    | `localDiskDb`   |
+| `sails.config.datastores.localDiskDb.adapter` | ((string))    | `sails-disk`    |
 
 
 i.e.

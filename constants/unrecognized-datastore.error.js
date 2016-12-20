@@ -20,7 +20,7 @@ module.exports = {
 
   template:
   'Unrecognized datastore `<%= datastoreIdentity %>` <% if (typeof modelIdentity !== \'undefined\') { %>referenced by model (`<%= modelIdentity %>`)<% }%>.\n'+
-  'Are you sure that datastore exists?  It should be defined in `sails.config.connections`.',
+  'Are you sure that datastore exists?  It should be defined in `sails.config.datastores`.',
 
 
 };
