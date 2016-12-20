@@ -77,15 +77,15 @@ i.e.
   // Default model properties
   models: {
 
-    // This default connection (i.e. datasource) for the app
-    // will be used for each model unless otherwise specified.
-    connection: 'localDiskDb'
+    // This default datastore for the app will be used for
+    // each model unless otherwise specified.
+    datastore: 'localDiskDb'
   },
 
 
   // Connections to data sources, web services, and external APIs.
   // Can be attached to models and/or accessed directly.
-  connections: {
+  datastores: {
 
     // Built-in disk persistence
     // (by default, creates the file: `.tmp/localDiskDb.db`)

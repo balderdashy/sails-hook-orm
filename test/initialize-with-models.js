@@ -27,7 +27,7 @@ describe('initialize() with model(s)', function (){
           orm: require('../')
         },
         loadHooks: ['moduleloader', 'userconfig', 'orm'],
-        connections: {
+        datastores: {
           pretendDatabase: {
             adapter: 'sails-pretend-adapter-that-totally-does-not-exist'
           }
@@ -38,7 +38,7 @@ describe('initialize() with model(s)', function (){
           moduleDefinitions: {
             models: {
               foo: {
-                connection: 'pretendDatabase'
+                datastore: 'pretendDatabase'
               }
             }
           }
