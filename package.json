@@ -31,7 +31,8 @@
     "prompt": "0.2.14",
     "rttc": "^10.0.0-0",
     "sails-disk": "^0.10.10",
-    "waterline": "balderdashy/waterline"
+    "waterline": "balderdashy/waterline",
+    "waterline-utils": "treelinehq/waterline-utils"
   },
   "sails": {
     "isHook": true,
