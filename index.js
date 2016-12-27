@@ -34,57 +34,65 @@ module.exports = function (sails) {
      *
      * @type {Dictionary}
      */
-    defaults: {
+    defaults: function() {
 
-      globals: {
-        adapters: true,
-        models: true
-      },
+      var defaults = {
 
-
-      // Default model/adapter definitions to automatically attach
-      // to `sails.hooks.orm.adapters` and/or `sails.hooks.orm.models`.
-      orm: {
-
-        // By default, relevant warnings are shown when NODE_ENV is "production".
-        skipProductionWarnings: false,
-
-        //================================================================
-        // Experimental
-        // (may change at any time!)
-        //================================================================
-        moduleDefinitions: {
-          models: {},
-        }
-        //================================================================
-
-      },
+        globals: {
+          adapters: true,
+          models: true
+        },
 
 
-      // Default model properties
-      models: {
+        // Default model/adapter definitions to automatically attach
+        // to `sails.hooks.orm.adapters` and/or `sails.hooks.orm.models`.
+        orm: {
 
-        // This default connection (i.e. datasource) for the app
-        // will be used for each model unless otherwise specified.
-        datastore: 'default',
+          // By default, relevant warnings are shown when NODE_ENV is "production".
+          skipProductionWarnings: false,
 
-        // Make the `id` attribute the default primary key.
-        primaryKey: 'id'
+          //================================================================
+          // Experimental
+          // (may change at any time!)
+          //================================================================
+          moduleDefinitions: {
+            models: {},
+          }
+          //================================================================
 
-      },
+        },
 
 
-      // Connections to data sources, web services, and external APIs.
-      // Can be attached to models and/or accessed directly.
-      datastores: {
+        // Default model properties
+        models: {
 
-        // Built-in disk persistence
-        // (by default, creates the file: `.tmp/localDiskDb.db`)
-        default: {
-          adapter: require('sails-disk')
+          // This default connection (i.e. datasource) for the app
+          // will be used for each model unless otherwise specified.
+          datastore: 'default',
+
+          // Make the `id` attribute the default primary key.
+          primaryKey: 'id'
+
         }
 
+      };
+
+      // Only supply the `default` datastore adapter if it's not configured manually.
+      // This is to prevent two adapter modules from being merged together.
+      if (!sails.config.datastores || !sails.config.datastores.default || !sails.config.datastores.default.adapter) {
+
+        defaults.datastores = {
+
+          // Built-in disk persistence
+          // (by default, creates the file: `.tmp/localDiskDb.db`)
+          default: {
+            adapter: require('sails-disk')
+          }
+
+        };
       }
+
+      return defaults;
 
     },
 
