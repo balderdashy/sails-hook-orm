@@ -61,8 +61,8 @@ This hook sets the following implicit default configuration on `sails.config`:
 | Property                                       | Type          | Default         |
 |------------------------------------------------|:-------------:|-----------------|
 | `sails.config.globals.models`                  | ((boolean))   | `true`          |
-| `sails.config.models.datastore`                | ((string))    | `localDiskDb`   |
-| `sails.config.datastores.localDiskDb.adapter` | ((string))    | `sails-disk`    |
+| `sails.config.models.datastore`                | ((string))    | `default`   |
+| `sails.config.datastores.default.adapter`      | ((ref))    | `require('sails-disk')`    |
 
 
 i.e.
@@ -79,7 +79,7 @@ i.e.
 
     // This default datastore for the app will be used for
     // each model unless otherwise specified.
-    datastore: 'localDiskDb'
+    datastore: 'default'
   },
 
 
@@ -89,7 +89,7 @@ i.e.
 
     // Built-in disk persistence
     // (by default, creates the file: `.tmp/localDiskDb.db`)
-    localDiskDb: {
+    default: {
       adapter: 'sails-disk'
     }
   }
