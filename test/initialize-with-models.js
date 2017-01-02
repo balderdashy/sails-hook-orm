@@ -91,6 +91,14 @@ describe('initialize() with model(s)', function (){
         models: {
           migrate: 'safe'
         },
+        datastores: {
+          default: {
+            // This isn't a config that sails-disk actually uses, but it should
+            // get normalized (i.e. trailing slash removed) in sails-hook-orm
+            // anyway to prevent having to do it at the adapter level.
+            url: 'http://foo.com/'
+          }
+        },
         orm: {
           // THIS IS FOR EXPERIMENTAL USE ONLY!
           // (could change at any time)
@@ -133,6 +141,10 @@ describe('initialize() with model(s)', function (){
     it('should contain the expected models in `sails.hooks.orm.models`', function (){
       assert.equal(_.keys(app.models).length, 1);
       assert(_.isObject(app.models.foo), new Error('Should have a model under the `foo` key'));
+    });
+
+    it('should trim the trailing slash off of the configured `url` for the datastore', function() {
+      assert.equal(app.hooks.orm.datastores.default.internalConfig.url, 'http://foo.com');
     });
 
 
