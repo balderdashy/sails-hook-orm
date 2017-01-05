@@ -108,7 +108,8 @@ describe('initialize() with model(s)', function (){
                 primaryKey: 'id',
                 attributes: {
                   id: {
-                    type: 'number'
+                    type: 'number',
+                    required: true
                   }
                 }
               }
