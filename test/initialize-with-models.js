@@ -148,6 +148,15 @@ describe('initialize() with model(s)', function (){
       assert.equal(app.hooks.orm.datastores.default.internalConfig.url, 'http://foo.com');
     });
 
+    it('should expose `sails.getDatastore()` (and on the hook too)', function (){
+      assert(_.isFunction(app.getDatastore));
+      assert(_.isFunction(app.hooks.orm.getDatastore));
+    });
+
+    it('should expose `.getDatastore()` method on models', function (){
+      assert(_.isFunction(app.hooks.orm.models.foo.getDatastore), 'not a function');
+    });
+
 
     // Lower the app.
     after(function teardown(done) {
