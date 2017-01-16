@@ -78,6 +78,30 @@ module.exports = function (sails) {
 
       };
 
+      // If both `sails.config.connections` and `sails.config.datastores` is set, throw an error.
+      if (sails.config.datastores && sails.config.connections) {
+        throw new Error(
+                        '\n-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n'+
+                        'Invalid database configuration detected!\n'+
+                        'The `sails.config.datastores` setting is a replacement for `sails.config.connections`.\n'+
+                        'You can\'t have both!  Please check that your `sails.config.datastores` setting is correct,\n'+
+                        'and then remove `sails.config.connections ` entirely.\n'+
+                        'For more info, see http://sailsjs.com/docs/upgrading/to-v-1-0/#?changes-to-database-configuration.\n'+
+                        '-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n');
+      }
+
+      // If both `sails.config.models.connection` and `sails.config.models.datastore` is set, throw an error.
+      if (sails.config.models && sails.config.models.datastore && sails.config.models.connection) {
+        throw new Error(
+                        '\n-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n'+
+                        'Invalid database configuration detected!\n'+
+                        'The `sails.config.models.datastore` setting is a replacement for `sails.config.models.connection`.\n'+
+                        'You can\'t have both!  Please check that your `sails.config.models.datastore` setting is correct,\n'+
+                        'and then remove `sails.config.models.connection ` entirely.\n'+
+                        'For more info, see http://sailsjs.com/docs/upgrading/to-v-1-0/#?changes-to-database-configuration.\n'+
+                        '-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n');
+      }
+
       // Only supply the `default` datastore adapter if it's not configured manually.
       // This is to prevent two adapter modules from being merged together.
       if (!sails.config.datastores || !sails.config.datastores.default || !sails.config.datastores.default.adapter) {
