@@ -2,6 +2,7 @@
  * Module dependencies
  */
 
+var _ = require('@sailshq/lodash');
 var util = require('util');
 var async = require('async');
 var initialize = require('./lib/initialize');
@@ -126,8 +127,14 @@ module.exports = function (sails) {
       // and move it to `datastores`.
       if (sails.config.connections) {
         sails.log.debug('The `sails.config.connections` setting is deprecated.  Please use `sails.config.datastores` instead.\n');
-        sails.config.datastores = sails.config.connections;
+        sails.config.datastores = _.extend(sails.config.datastores, sails.config.connections);
         delete sails.config.connections;
+      }
+
+      if (sails.config.models.connection) {
+        sails.log.debug('The `sails.config.models.connection` setting is deprecated.  Please use `sails.config.models.datastore` instead.\n');
+        sails.config.models.datastore = sails.config.models.connection;
+        delete sails.config.models.connection;
       }
 
       // Listen for reload events
@@ -146,7 +153,7 @@ module.exports = function (sails) {
      */
     initialize: function (next) {
       // console.log('>>>>>> sails.hooks.orm.initialize() called.');
-      // var _ = require('lodash');
+      // var _ = require('@sailshq/lodash');
       // console.log(
       //   'Currently there are %d models, %d datastores, and %d adapters:',
       //   _.keys(sails.hooks.orm.models).length,
