@@ -2,6 +2,7 @@
  * Module dependencies
  */
 
+var _ = require('@sailshq/lodash');
 var util = require('util');
 var async = require('async');
 var initialize = require('./lib/initialize');
@@ -77,6 +78,30 @@ module.exports = function (sails) {
 
       };
 
+      // If both `sails.config.connections` and `sails.config.datastores` is set, throw an error.
+      if (sails.config.datastores && sails.config.connections) {
+        throw new Error(
+                        '\n-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n'+
+                        'Invalid database configuration detected!\n'+
+                        'The `sails.config.datastores` setting is a replacement for `sails.config.connections`.\n'+
+                        'You can\'t have both!  Please check that your `sails.config.datastores` setting is correct,\n'+
+                        'and then remove `sails.config.connections ` entirely.\n'+
+                        'For more info, see http://sailsjs.com/docs/upgrading/to-v-1-0/#?changes-to-database-configuration.\n'+
+                        '-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n');
+      }
+
+      // If both `sails.config.models.connection` and `sails.config.models.datastore` is set, throw an error.
+      if (sails.config.models && sails.config.models.datastore && sails.config.models.connection) {
+        throw new Error(
+                        '\n-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n'+
+                        'Invalid database configuration detected!\n'+
+                        'The `sails.config.models.datastore` setting is a replacement for `sails.config.models.connection`.\n'+
+                        'You can\'t have both!  Please check that your `sails.config.models.datastore` setting is correct,\n'+
+                        'and then remove `sails.config.models.connection ` entirely.\n'+
+                        'For more info, see http://sailsjs.com/docs/upgrading/to-v-1-0/#?changes-to-database-configuration.\n'+
+                        '-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n');
+      }
+
       // Only supply the `default` datastore adapter if it's not configured manually.
       // This is to prevent two adapter modules from being merged together.
       if (!sails.config.datastores || !sails.config.datastores.default || !sails.config.datastores.default.adapter) {
@@ -125,9 +150,17 @@ module.exports = function (sails) {
       // Look for the `connections` config, and if found, log a deprecation message
       // and move it to `datastores`.
       if (sails.config.connections) {
-        sails.log.debug('The `sails.config.connections` setting is deprecated.  Please use `sails.config.datastores` instead.\n');
-        sails.config.datastores = sails.config.connections;
+        sails.log.debug('The `sails.config.connections` setting is deprecated.  Please use `sails.config.datastores` instead.');
+        sails.log.debug('For more info, see http://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-database-configuration\n');
+        sails.config.datastores = _.extend(sails.config.datastores, sails.config.connections);
         delete sails.config.connections;
+      }
+
+      if (sails.config.models.connection) {
+        sails.log.debug('The `sails.config.models.connection` setting is deprecated.  Please use `sails.config.models.datastore` instead.\n');
+        sails.log.debug('For more info, see http://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-database-configuration\n');
+        sails.config.models.datastore = sails.config.models.connection;
+        delete sails.config.models.connection;
       }
 
       // Listen for reload events
@@ -146,7 +179,7 @@ module.exports = function (sails) {
      */
     initialize: function (next) {
       // console.log('>>>>>> sails.hooks.orm.initialize() called.');
-      // var _ = require('lodash');
+      // var _ = require('@sailshq/lodash');
       // console.log(
       //   'Currently there are %d models, %d datastores, and %d adapters:',
       //   _.keys(sails.hooks.orm.models).length,
