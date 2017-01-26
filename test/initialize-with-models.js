@@ -145,7 +145,7 @@ describe('initialize() with model(s)', function (){
     });
 
     it('should trim the trailing slash off of the configured `url` for the datastore', function() {
-      assert.equal(app.hooks.orm.datastores.default.internalConfig.url, 'http://foo.com');
+      assert.equal(app.hooks.orm.datastores.default.config.url, 'http://foo.com');
     });
 
     it('should expose `sails.getDatastore()` (and on the hook too)', function (){
