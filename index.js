@@ -163,7 +163,13 @@ module.exports = function (sails) {
         delete sails.config.models.connection;
       }
 
-      // Listen for reload events
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+      // FUTURE: move both of the following event bindings out of `configure()`.
+      // (These were originally moved into `configure` as a hack to solve timing issues,
+      // but `configure` is really supposed to be reserved for setting up configuration.)
+      // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+      // Listen for reload events.
       sails.on('hook:orm:reload', sails.hooks.orm.reload);
 
       // Listen for lower event, and tear down all of the adapters

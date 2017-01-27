@@ -26,10 +26,10 @@
   "dependencies": {
     "@sailshq/lodash": "^3.10.2",
     "async": "2.0.1",
-    "bluebird": "3.2.1",
+    "chalk": "1.1.3",
     "flaverr": "^1.0.0",
+    "parley": "^2.1.0",
     "prompt": "0.2.14",
-    "rttc": "^10.0.0-0",
     "sails-disk": "^1.0.0-0",
     "waterline": "^0.13.0-2",
     "waterline-utils": "^1.0.0"
