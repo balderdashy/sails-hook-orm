@@ -24,7 +24,7 @@ module.exports = {
   '(at least it is not in the expected path within the local `node_modules/` directory).\n'+
   '\n'+
   'To attempt to install this adapter, run:\n'+
-  '`npm install <%=adapterPackageName%> --save'
+  'npm install <%=adapterPackageName%> --save'
 
 
 };
