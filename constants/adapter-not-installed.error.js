@@ -19,7 +19,7 @@ module.exports = {
 
 
   template:
-  'Trying to use an unrecognized adapter, `<%=adapterPackageName%><% if (typeof datastoreIdentity !== \'undefined\') { %>, in datastore `<%=datastoreIdentity%>`.<% } else { %>.<% } %>\n'+
+  'Trying to use an unrecognized adapter, `<%=adapterPackageName%>`<% if (typeof datastoreIdentity !== \'undefined\') { %>, in datastore `<%=datastoreIdentity%>`.<% } else { %>.<% } %>\n'+
   'This may or may not be a real adapter available on NPM, but in any case it looks like `<%=adapterPackageName%>` is not installed in this app\n'+
   '(at least it is not in the expected path within the local `node_modules/` directory).\n'+
   '\n'+
