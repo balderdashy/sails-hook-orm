@@ -151,14 +151,16 @@ module.exports = function (sails) {
       // and move it to `datastores`.
       if (sails.config.connections) {
         sails.log.debug('The `sails.config.connections` setting is deprecated.  Please use `sails.config.datastores` instead.');
-        sails.log.debug('For more info, see http://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-database-configuration\n');
+        sails.log.debug('For more info, see http://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-database-configuration');
+        console.log();
         sails.config.datastores = _.extend(sails.config.datastores, sails.config.connections);
         delete sails.config.connections;
       }
 
       if (sails.config.models.connection) {
-        sails.log.debug('The `sails.config.models.connection` setting is deprecated.  Please use `sails.config.models.datastore` instead.\n');
-        sails.log.debug('For more info, see http://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-database-configuration\n');
+        sails.log.debug('The `sails.config.models.connection` setting is deprecated.  Please use `sails.config.models.datastore` instead.');
+        sails.log.debug('For more info, see http://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-database-configuration');
+        console.log();
         sails.config.models.datastore = sails.config.models.connection;
         delete sails.config.models.connection;
       }
