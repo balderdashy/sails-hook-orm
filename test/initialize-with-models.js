@@ -113,9 +113,6 @@ describe('initialize() with model(s)', function (){
                   }
                 }
               }
-            },
-            adapters: {
-              'sails-disk': {}
             }
           }
         }
