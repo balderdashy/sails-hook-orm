@@ -72,7 +72,10 @@ module.exports = function (sails) {
           datastore: 'default',
 
           // Make the `id` attribute the default primary key.
-          primaryKey: 'id'
+          primaryKey: 'id',
+
+          // No implicit default attributes.
+          attributes: {}
 
         }
 
