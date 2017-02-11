@@ -3,8 +3,6 @@
  */
 
 var _ = require('@sailshq/lodash');
-var util = require('util');
-var async = require('async');
 var initialize = require('./lib/initialize');
 var reload = require('./lib/reload');
 var teardown = require('./lib/teardown');
