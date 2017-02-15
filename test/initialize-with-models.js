@@ -163,4 +163,79 @@ describe('initialize() with model(s)', function (){
   });//</with the appropriate adapter(s)>
 
 
+  describe('with the duplicate model identities', function (){
+
+    // New up an instance of Sails.
+    var app = new Sails();
+
+    // Hold the application def
+    var appDef;
+
+    // Load the app.
+    before(function setup(){
+      appDef = {
+        globals: false,
+        log: { level: 'silent' },
+        hooks: {
+          // Inject the orm hook in this repo into this Sails app
+          orm: require('../')
+        },
+        loadHooks: ['moduleloader', 'userconfig', 'orm'],
+        models: {
+          migrate: 'safe'
+        },
+        datastores: {
+          default: {
+            // This isn't a config that sails-disk actually uses, but it should
+            // get normalized (i.e. trailing slash removed) in sails-hook-orm
+            // anyway to prevent having to do it at the adapter level.
+            url: 'http://foo.com/'
+          }
+        },
+        orm: {
+          // THIS IS FOR EXPERIMENTAL USE ONLY!
+          // (could change at any time)
+          moduleDefinitions: {
+            models: {
+              foo: {
+                identity: 'foo',
+                primaryKey: 'id',
+                attributes: {
+                  id: {
+                    type: 'number',
+                    required: true
+                  }
+                }
+              },
+              bar: {
+                identity: 'foo',
+                primaryKey: 'id',
+                attributes: {
+                  id: {
+                    type: 'number',
+                    required: true
+                  }
+                }
+              }
+            }
+          }
+        }
+      };
+    });
+
+
+    it('should not allow the ORM hook to load', function (done){
+      app.load(appDef, function(err) {
+        assert(err);
+        return done();
+      });
+    });
+
+    // Lower the app.
+    after(function teardown(done) {
+      app.lower(done);
+    });
+
+  });//</with duplicate model identities>
+
 });
