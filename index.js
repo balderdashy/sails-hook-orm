@@ -215,9 +215,23 @@ module.exports = function (sails) {
     /**
      * sails.hooks.orm.teardown()
      */
-    teardown: function (next) {
+    teardown: function (done) {
+
+      // Callback is optional:
+      if (_.isUndefined(done)) {
+        done = function (err){
+          if (err) {
+            sails.log.error('sails.hooks.orm.teardown() was called without providing a callback-- but it failed to teardown the ORM hook!  Details:', err);
+            return;
+          }//-•
+        };
+      }
+      else if (!_.isFunction(done)) {
+        throw new Error('Consistency violation: If specified, `done` must be a function.');
+      }
+
       // console.log('>>>>>> sails.hooks.orm.teardown() called.');
-      return teardown(sails.hooks.orm, sails, next);
+      return teardown(sails.hooks.orm, sails, done);
     }
 
 
