@@ -30,7 +30,7 @@ module.exports = {
   'Please ensure that `<%=adapterPackageName%>` is a valid Sails/Waterline adapter, and that it is installed in this app.\n'+
   '\n'+
   'Error details:\n'+
-  '<% originalErrorStackTrace %>'
+  '<%= originalErrorStackTrace %>'
 
 
 };
