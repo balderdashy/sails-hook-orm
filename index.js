@@ -5,7 +5,6 @@
 var _ = require('@sailshq/lodash');
 var initialize = require('./lib/initialize');
 var reload = require('./lib/reload');
-var teardown = require('./lib/teardown');
 
 
 
@@ -211,17 +210,24 @@ module.exports = function (sails) {
     },
 
 
-
     /**
      * sails.hooks.orm.teardown()
+     *
+     * Tear down the ORM.
+     *
+     * @required  {Dictionary} hook
+     * @required  {SailsApp} sails
+     * @optional  {Function} done
      */
     teardown: function (done) {
+      // sails.log.verbose('>>>>>> sails.hooks.orm.teardown() called.');
 
-      // Callback is optional:
+      // Normalize optional callback.
       if (_.isUndefined(done)) {
         done = function (err){
           if (err) {
-            sails.log.error('sails.hooks.orm.teardown() was called without providing a callback-- but it failed to teardown the ORM hook!  Details:', err);
+            sails.log.error('Could not tear down the ORM hook.  Error details:', err);
+            sails.log.verbose('(The error above was logged like this because `sails.hooks.orm.teardown()` encountered an error in a code path where it was invoked without providing a callback.)');
             return;
           }//-•
         };
@@ -230,9 +236,20 @@ module.exports = function (sails) {
         throw new Error('Consistency violation: If specified, `done` must be a function.');
       }
 
-      // console.log('>>>>>> sails.hooks.orm.teardown() called.');
-      return teardown(sails.hooks.orm, sails, done);
-    }
+      // If the ORM hasn't been built yet, then don't worry about tearing it down.
+      if (!sails.hooks.orm._orm) {
+        return done();
+      }//-•
+
+      // Tear down the ORM.
+      try {
+        sails.hooks.orm._orm.teardown(function (err) {
+          if (err) { return done(err); }
+          else { return done(); }
+        });
+      } catch (e) { return done(e); }
+
+    },//</ definition of `sails.hooks.orm.teardown` >
 
 
   };
