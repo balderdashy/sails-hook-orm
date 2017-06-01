@@ -33,7 +33,7 @@
     "parley": "^2.1.0",
     "prompt": "0.2.14",
     "sails-disk": "^1.0.0-0",
-    "waterline": "^0.13.0-2",
+    "waterline": "^0.13.0-rc11",
     "waterline-utils": "^1.0.0"
   },
   "sails": {
