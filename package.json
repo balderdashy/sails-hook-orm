@@ -4,9 +4,9 @@
   "description": "The ORM hook from Sails core.",
   "main": "index.js",
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/mocha test -t 15000",
-    "posttest": "npm run lint",
-    "lint": "node node_modules/eslint/bin/eslint.js lib constants index.js"
+    "test": "npm run lint && npm run custom-tests && echo 'Done.'",
+    "custom-tests": "node ./node_modules/mocha/bin/mocha test -t 15000 && echo",
+    "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0 && echo '✔  Your code looks good.'"
   },
   "repository": {
     "type": "git",
@@ -41,8 +41,8 @@
     "hookName": "orm"
   },
   "devDependencies": {
+    "eslint": "3.19.0",
     "mocha": "3.0.2",
-    "sails": "^1.0.0-5",
-    "eslint": "2.11.1"
+    "sails": "^1.0.0-5"
   }
 }
