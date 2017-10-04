@@ -22,9 +22,9 @@
   "author": "Mike McNeil",
   "license": "MIT",
   "bugs": {
-    "url": "http://sailsjs.com/bugs"
+    "url": "https://sailsjs.com/bugs"
   },
-  "homepage": "http://sailsjs.com",
+  "homepage": "https://sailsjs.com",
   "dependencies": {
     "@sailshq/lodash": "^3.10.2",
     "async": "2.0.1",
