@@ -89,7 +89,8 @@ describe('initialize() with model(s)', function (){
         },
         loadHooks: ['moduleloader', 'userconfig', 'orm'],
         models: {
-          migrate: 'safe'
+          migrate: 'safe',
+          archiveModelIdentity: false,
         },
         datastores: {
           default: {
