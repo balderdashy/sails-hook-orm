@@ -111,7 +111,7 @@ module.exports = function (sails) {
           // Built-in disk persistence
           // (by default, creates the file: `.tmp/default.db`)
           default: {
-            adapter: require('sails-disk')
+            adapter: 'sails-disk'
           }
 
         };
