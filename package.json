@@ -41,7 +41,7 @@
     "hookName": "orm"
   },
   "devDependencies": {
-    "eslint": "3.19.0",
+    "eslint": "4.11.0",
     "mocha": "3.0.2",
     "sails": "^1.0.0-5"
   }
