@@ -136,16 +136,17 @@ module.exports = function (sails) {
       // (This particular timing-- before initialize()-- is for backwards compatibility.
       //  Originally it was so that other hooks could mix in models/adapters. Note that
       //  this behavior may change in a future version of Sails.)
-      if (!sails.hooks.orm.models) {
-        sails.hooks.orm.models = {};
-        // Expose a reference to `hook.models` as `sails.models`
-        sails.models = sails.hooks.orm.models;
+      if (!sails.models) {
+        sails.models = {};
       }
-      if (!sails.hooks.orm.adapters) {
-        sails.hooks.orm.adapters = {};
-        // Expose a reference to `hook.adapters` as `sails.adapters`
-        sails.adapters = sails.hooks.orm.adapters;
+      // Expose a reference to `sails.models` as `hook.models`
+      sails.hooks.orm.models = sails.models;
+
+      if (!sails.adapters) {
+        sails.adapters = {};
       }
+      // Expose a reference to `sails.adapters` as `hook.adapters`
+      sails.hooks.orm.adapters = sails.adapters;
 
       // Look for the `connections` config, and if found, log a deprecation message
       // and move it to `datastores`.
