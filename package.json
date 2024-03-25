@@ -30,6 +30,7 @@
     "async": "2.6.4",
     "chalk": "2.3.0",
     "flaverr": "^1.8.0",
+    "is-promise": "^4.0.0",
     "parley": "^3.3.2",
     "prompt": "1.2.1",
     "sails-disk": "^2.0.0",
